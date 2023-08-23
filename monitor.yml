@@ -1,0 +1,20 @@
+---
+- name: Monitor CPU and RAM usage
+  hosts: all
+  gather_facts: true
+
+  tasks:
+    - name: Get CPU usage
+      shell: "top -bn1 | grep 'Cpu(s)' | awk '{print $2 + $4}'"
+      register: cpu_usage
+
+    - name: Get RAM usage
+      shell: "free | awk '/Mem:/ {print $3/$2 * 100.0}'"
+      register: ram_usage
+
+    - name: Print CPU and RAM usage
+      debug:
+        msg: "CPU Usage: {{ cpu_usage.stdout }}%, RAM Usage: {{ ram_usage.stdout }}%"
+    
+  
+  

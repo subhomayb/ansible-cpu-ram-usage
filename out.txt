@@ -1,0 +1,27 @@
+
+PLAY [Monitor CPU and RAM usage] ***********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [skdockertest]
+ok: [oag]
+
+TASK [Get CPU usage] ***********************************************************
+changed: [skdockertest]
+changed: [oag]
+
+TASK [Get RAM usage] ***********************************************************
+changed: [skdockertest]
+changed: [oag]
+
+TASK [Print CPU and RAM usage] *************************************************
+ok: [skdockertest] => {
+    "msg": "CPU Usage: 6.2%, RAM Usage: 25.0174%"
+}
+ok: [oag] => {
+    "msg": "CPU Usage: 1.6%, RAM Usage: 10.4355%"
+}
+
+PLAY RECAP *********************************************************************
+oag                        : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+skdockertest               : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
